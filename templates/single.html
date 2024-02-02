@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <!-- Content -->
+    <section>
+        <header class="main">
+            <h1>{{ object.title }}</h1>
+        </header>
+
+        <span class="image main">
+            <img src="{{ object.thumbnail.url }}" alt="{{ object.title }}"/>
+        </span>
+
+        {{ object.content | safe }}
+
+        {% if object.video %}
+            <a href="{{ object.video }}" class="button primary fit icon solid fa-video">{% translate 'Show Video' %}</a>
+        {% endif %}
+
+        {% if object.audio %}
+            <a href="{{ object.audio.url }}" class="button primary fit icon solid fa-download">{% translate 'Download Audio' %}</a>
+        {% endif %}
+
+    </section>
+    <!-- /Content -->
+{% endblock %}
